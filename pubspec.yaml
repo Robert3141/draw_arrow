@@ -1,8 +1,7 @@
 name: draw_arrow
-description: A new Flutter package project.
+description: Draws an arrow from a start to end point on a flutter canvas
 version: 0.0.1
-author:
-homepage:
+repository: https://github.com/Robert3141/draw_arrow
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
