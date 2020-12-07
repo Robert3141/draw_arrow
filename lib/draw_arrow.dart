@@ -5,34 +5,31 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
-
-class Draw {
-  num abs(num val) {
+///
+/// Draws shapes
+///
+extension ArrowDrawing on Canvas {
+  num _abs(num val) {
     return val > 0 ? val : -val;
   }
 
   ///
   /// BASED OFF https://www.codeproject.com/Questions/125049/Draw-an-arrow-with-big-cap
   ///
-  void drawArrow(Canvas canvas, Offset arrowStart, Offset arrowEnd,
-      [Paint painter]) {
-    double arrowMultiplier = 3;
+  void drawArrow(Offset arrowStart, Offset arrowEnd,
+      {Paint painter, double width}) {
+    double arrowMultiplier = width ?? 3;
 
     //tip of the arrow
     Offset arrowPoint = arrowEnd;
 
     //determine arrow length
-    double arrowLength = sqrt(pow(abs(arrowStart.dx - arrowEnd.dx), 2) +
-        pow(abs(arrowStart.dy - arrowEnd.dy), 2));
+    double arrowLength = sqrt(pow(_abs(arrowStart.dx - arrowEnd.dx), 2) +
+        pow(_abs(arrowStart.dy - arrowEnd.dy), 2));
 
     //determine arrow angle
     double arrowAngle = atan2(
-        abs(arrowStart.dy - arrowEnd.dy), abs(arrowStart.dx - arrowEnd.dx));
+        _abs(arrowStart.dy - arrowEnd.dy), _abs(arrowStart.dx - arrowEnd.dx));
 
     //get the x,y of the back of the point
 
@@ -107,13 +104,15 @@ class Draw {
       arrowPointBack,
       arrowPointRight
     ];
+    // todo: remove
     Path arrowPath = Path()..addPolygon(arrowPoints, true);
 
     //define paint
     Paint paint = painter ?? Paint();
 
     //draw
-
-    canvas.drawPath(arrowPath, paint);
+    this.drawPath(arrowPath, paint);
+    this.drawLine(
+        arrowStart, arrowPointBack, paint..strokeWidth = arrowMultiplier * 2);
   }
 }
