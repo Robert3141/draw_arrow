@@ -1,14 +1,14 @@
 # draw_arrow
 
-A new Flutter package project.
+[![Pub](https://img.shields.io/pub/v/shared_preferences_moretypes.svg)](https://pub.dev/packages/draw_arrow)
+[![Documentation](https://img.shields.io/badge/API-reference-blue)](https://pub.dev/documentation/draw_arrow/latest/draw_arrow/draw_arrow-library.html)
 
-## Getting Started
+Draws an arrow from a start to end point on a flutter canvas
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+## Usage
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+literally import and use:
+```
+import 'package:draw_arrow/draw_arrow.dart';
+canvas.drawArrow(arrowStart, arrowEnd);
+```
